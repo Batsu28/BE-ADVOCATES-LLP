@@ -23,8 +23,9 @@ const Home = () => {
         <section className="relative h-screen">
           <div className="absolute inset-0">
             <img
-              src="/cover.webp" // Add a professional law office image
+              src="/cover.webp"
               alt="Law Office"
+              loading="eager"
               className="w-full h-full object-cover"
             />
             <div className="absolute inset-0 bg-black/50" />
