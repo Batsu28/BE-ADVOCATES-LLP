@@ -1,7 +1,8 @@
-import { MdEmail } from "react-icons/md"; // Material Design email icon
+import { MdEmail } from "react-icons/md";
 import { BsTelephoneFill } from "react-icons/bs";
-import { HiChevronRight } from "react-icons/hi"; // Add this import
+import { HiChevronRight } from "react-icons/hi";
 import { Link } from "react-router-dom";
+import { siteConfig } from "../data/siteData";
 
 const MemberCard = ({ style, member }) => {
   return (
@@ -17,9 +18,9 @@ const MemberCard = ({ style, member }) => {
           {/* Image Container */}
           <div className="h-[70%] overflow-hidden">
             <img
-              src={member.imageUrl || "/empty.webp"}
+              src={member.imageUrl}
               className="w-full h-full object-cover object-center transition-transform duration-300 group-hover/member:scale-105"
-              alt={member.name || "image"}
+              alt={member.name}
             />
           </div>
 
@@ -71,48 +72,20 @@ const MemberCard = ({ style, member }) => {
 };
 
 const Team = () => {
-  const team = [
-    {
-      id: 1,
-      name: "БАЛЖИННЯМ БУЯНТОГОС",
-      position: "Хуульч, өмгөөлөгч",
-      phone: "99115442",
-      email: "buyantogos@lrcm.mn",
-      imageUrl: "./member1.webp",
-    },
-    {
-      id: 2,
-      name: "ДЭЛЭГ ЭНХГЭРЭЛ",
-      position: "Гишүүн хуульч, өмгөөлөгч",
-      phone: "88106076",
-      email: "enkhgerel@lrcm.mn",
-      imageUrl: "./member2.webp",
-    },
-    {
-      id: 3,
-      name: "ОДГЭРЭЛ УЯНГА",
-      position: "Хуульч",
-      phone: "99990907",
-      email: "info@lrcm.mn",
-      imageUrl: "./member3.webp",
-    },
-  ];
   return (
-    <>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {team.map((member, i) => (
-          <div
-            key={`members${i}`}
-            className="transform hover:-translate-y-2 transition-transform duration-300"
-          >
-            <MemberCard
-              member={member}
-              style="w-full h-[450px] bg-white shadow-lg rounded-xl overflow-hidden hover:shadow-xl transition-shadow duration-300"
-            />
-          </div>
-        ))}
-      </div>
-    </>
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {siteConfig.team.map((member) => (
+        <div
+          key={member.id}
+          className="transform hover:-translate-y-2 transition-transform duration-300"
+        >
+          <MemberCard
+            member={member}
+            style="w-full h-[450px] bg-white shadow-lg rounded-xl overflow-hidden hover:shadow-xl transition-shadow duration-300"
+          />
+        </div>
+      ))}
+    </div>
   );
 };
 

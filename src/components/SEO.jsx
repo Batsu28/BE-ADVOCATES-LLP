@@ -1,42 +1,15 @@
 import { Helmet } from "react-helmet-async";
+import { siteConfig, seoData, structuredData } from "../data/siteData";
 
 const SEO = ({ title, description, name, type, image }) => {
-  const siteUrl = "https://www.lrcm.mn";
-
-  const structuredData = {
-    "@context": "https://schema.org",
-    "@type": "LegalService",
-    name: "BE ADVOCATES LLP",
-    image: "https://www.lrcm.mn/logo.jpg",
-    description:
-      "BE ADVOCATES LLP нь 2013 оноос хойш мэргэжлийн өндөр төвшинд хууль зүйн үйлчилгээг үзүүлж байна.",
-    address: {
-      "@type": "PostalAddress",
-      streetAddress: "Макс Тоуэр, 7 давхар, 706 тоот",
-      addressLocality: "Улаанбаатар",
-      addressRegion: "Чингэлтэй дүүрэг",
-      postalCode: "",
-      addressCountry: "MN",
-    },
-    geo: {
-      "@type": "GeoCoordinates",
-      latitude: "47.92053977653079",
-      longitude: "106.91005885038494",
-    },
-    telephone: "976-99115442",
-    email: "info@lrcm.mn",
-    openingHours: "Mo-Fr 09:00-18:00",
-  };
+  const siteUrl = siteConfig.url;
+  const defaultDescription = siteConfig.description;
 
   return (
     <Helmet>
       {/* Standard metadata tags */}
       <title>{title}</title>
-      <meta name="description" content={description} />
-      <meta
-        name="keywords"
-        content="хууль зүйн үйлчилгээ, өмгөөлөгч, BE ADVOCATES LLP, хуулийн фирм, өмгөөллийн үйлчилгээ"
-      />
+      <meta name="description" content={description || defaultDescription} />
       <link rel="canonical" href={`${siteUrl}${window.location.pathname}`} />
 
       {/* OpenGraph tags */}
@@ -45,17 +18,23 @@ const SEO = ({ title, description, name, type, image }) => {
         content={`${siteUrl}${window.location.pathname}`}
       />
       <meta property="og:title" content={title} />
-      <meta property="og:description" content={description} />
-      <meta property="og:type" content={type} />
-      <meta property="og:site_name" content="BE ADVOCATES LLP" />
-      <meta property="og:locale" content="mn_MN" />
+      <meta
+        property="og:description"
+        content={description || defaultDescription}
+      />
+      <meta property="og:type" content={type || seoData.openGraph.type} />
+      <meta property="og:site_name" content={siteConfig.name} />
+      <meta property="og:locale" content={seoData.openGraph.locale} />
       {image && <meta property="og:image" content={`${siteUrl}${image}`} />}
 
       {/* Twitter Card tags */}
-      <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:creator" content={name} />
+      <meta name="twitter:card" content={seoData.twitter.cardType} />
+      <meta name="twitter:creator" content={seoData.twitter.handle} />
       <meta name="twitter:title" content={title} />
-      <meta name="twitter:description" content={description} />
+      <meta
+        name="twitter:description"
+        content={description || defaultDescription}
+      />
       {image && <meta name="twitter:image" content={`${siteUrl}${image}`} />}
 
       <script type="application/ld+json">

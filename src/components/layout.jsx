@@ -4,7 +4,7 @@ import Header from "./header";
 
 const Layout = ({ children }) => {
   return (
-    <div className="text-black font-roboto">
+    <div className="text-black">
       <Header />
       {children}
       <Footer />

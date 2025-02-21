@@ -1,5 +1,6 @@
 import Logo from "./svg/logo";
 import { Link } from "react-router-dom";
+import { siteConfig } from "../data/siteData";
 
 const FooterSection = ({ title, children }) => (
   <div className="flex flex-col gap-4">
@@ -9,6 +10,8 @@ const FooterSection = ({ title, children }) => (
 );
 
 const Footer = () => {
+  const { contact } = siteConfig;
+
   return (
     <footer className="bg-gray-900 text-gray-300">
       <div className="container mx-auto">
@@ -24,10 +27,7 @@ const Footer = () => {
                   ADVOCATES LLP
                 </span>
               </div>
-              <p className="text-sm text-gray-400">
-                BE ADVOCATES LLP нь 2013 оноос хойш мэргэжлийн өндөр төвшинд
-                хууль зүйн үйлчилгээг үзүүлж байна.
-              </p>
+              <p className="text-sm text-gray-400">{contact.address.full}</p>
             </div>
           </div>
 
@@ -35,12 +35,7 @@ const Footer = () => {
           <div className="lg:col-span-1">
             <FooterSection title="Цэс">
               <ul className="space-y-2">
-                {[
-                  { path: "/", label: "Нүүр" },
-                  { path: "/about", label: "Бидний тухай" },
-                  { path: "/services", label: "Үйлчилгээ" },
-                  { path: "/contact", label: "Холбоо барих" },
-                ].map((link) => (
+                {siteConfig.navigation.map((link) => (
                   <li key={link.path}>
                     <Link
                       to={link.path}
@@ -59,63 +54,50 @@ const Footer = () => {
           <div className="lg:col-span-1">
             <FooterSection title="Холбоо барих">
               <div className="space-y-3 text-gray-400">
-                <a
-                  href="tel:976-99115442"
-                  className="flex items-center gap-2 hover:text-white transition-colors py-1"
-                >
-                  <svg
-                    className="w-4 h-4 flex-shrink-0"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
+                {contact.phones.map((phone) => (
+                  <a
+                    key={phone.number}
+                    href={`tel:${phone.number}`}
+                    className="flex items-center gap-2 hover:text-white transition-colors py-1"
                   >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
-                    />
-                  </svg>
-                  <span className="break-all">976-99115442</span>
-                </a>
-                <a
-                  href="tel:976-99115442"
-                  className="flex items-center gap-2 hover:text-white transition-colors py-1"
-                >
-                  <svg
-                    className="w-4 h-4 flex-shrink-0"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
+                    <svg
+                      className="w-4 h-4 flex-shrink-0"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
+                      />
+                    </svg>
+                    <span className="break-all">{phone.number}</span>
+                  </a>
+                ))}
+                {contact.emails.map((email) => (
+                  <a
+                    key={email.address}
+                    href={`mailto:${email.address}`}
+                    className="flex items-center gap-2 hover:text-white transition-colors py-1"
                   >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
-                    />
-                  </svg>
-                  <span className="break-all">976-88106076</span>
-                </a>
-                <a
-                  href="mailto:info@lrcm.mn"
-                  className="flex items-center gap-2 hover:text-white transition-colors py-1"
-                >
-                  <svg
-                    className="w-4 h-4 flex-shrink-0"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                    />
-                  </svg>
-                  <span className="break-all">info@lrcm.mn</span>
-                </a>
+                    <svg
+                      className="w-4 h-4 flex-shrink-0"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                      />
+                    </svg>
+                    <span className="break-all">{email.address}</span>
+                  </a>
+                ))}
               </div>
             </FooterSection>
           </div>
@@ -124,8 +106,7 @@ const Footer = () => {
           <div className="lg:col-span-1">
             <FooterSection title="Хаяг">
               <p className="text-gray-400 leading-relaxed">
-                Монгол улс, Улаанбаатар, Чингэлтэй дүүрэг, 4-р хороо, Макс
-                Тоуэр, 7 давхар, 706 тоот
+                {contact.address.full}
               </p>
             </FooterSection>
           </div>

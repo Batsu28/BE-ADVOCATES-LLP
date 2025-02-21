@@ -1,17 +1,11 @@
 import { Link, useLocation } from "react-router-dom";
 import Logo from "./svg/logo";
 import { useState } from "react";
+import { siteConfig } from "../data/siteData";
 
 const Header = () => {
   const router = useLocation();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  const menuItems = [
-    { path: "/", label: "Нүүр" },
-    { path: "/about", label: "Бидний тухай" },
-    { path: "/services", label: "Үйлчилгээ" },
-    { path: "/contact", label: "Холбоо Барих" },
-  ];
 
   return (
     <header
@@ -23,7 +17,7 @@ const Header = () => {
           {/* Logo */}
           <Link to="/" target="_top" className="flex-shrink-0">
             <div className="flex items-center gap-3">
-              <div className={`w-12 h-12 bg-gray-900 rounded-lg text-white`}>
+              <div className={`w-12 h-12 bg-gray-900 rounded-xl text-white`}>
                 <Logo />
               </div>
               <span className={`text-xl font-semibold text-gray-900`}>
@@ -35,24 +29,26 @@ const Header = () => {
           {/* Desktop Navigation */}
           <nav className="hidden lg:block">
             <ul className="flex items-center gap-8">
-              {menuItems.map(({ path, label }) => (
-                <li key={path}>
+              {siteConfig.navigation.map((item) => (
+                <li key={item.path}>
                   <Link
-                    to={path}
+                    to={item.path}
                     target="_top"
                     className={`relative py-2 px-1 text-base font-medium transition-colors
                     ${
-                      router.pathname === path
+                      router.pathname === item.path
                         ? "text-black"
                         : "text-gray-600 hover:text-black"
                     }`}
                   >
-                    {label}
+                    {item.label}
                     <span
                       className={`absolute bottom-0 left-0 w-full h-0.5 transform origin-left transition-transform duration-300
                       bg-black
                       ${
-                        router.pathname === path ? "scale-x-100" : "scale-x-0"
+                        router.pathname === item.path
+                          ? "scale-x-100"
+                          : "scale-x-0"
                       }`}
                     />
                   </Link>
@@ -120,20 +116,20 @@ const Header = () => {
         >
           <nav className="px-6 pb-4">
             <ul className="flex flex-col gap-1">
-              {menuItems.map(({ path, label }) => (
-                <li key={path}>
+              {siteConfig.navigation.map((item) => (
+                <li key={item.path}>
                   <Link
-                    to={path}
+                    to={item.path}
                     target="_top"
                     onClick={() => setIsMenuOpen(false)}
                     className={`block py-2 text-lg font-medium transition-colors
                     ${
-                      router.pathname === path
+                      router.pathname === item.path
                         ? "text-black"
                         : "text-gray-600 hover:text-black"
                     }`}
                   >
-                    {label}
+                    {item.label}
                   </Link>
                 </li>
               ))}

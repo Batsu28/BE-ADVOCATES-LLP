@@ -1,0 +1,53 @@
+/* Base Typography */
+body {
+  font-family: theme('fontFamily.sans');
+  font-size: theme('fontSize.body');
+  color: theme('colors.gray.900');
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Headings */
+h1, .h1 {
+  font-family: theme('fontFamily.heading');
+  font-size: theme('fontSize.heading-1');
+  font-weight: theme('fontWeight.bold');
+}
+
+h2, .h2 {
+  font-family: theme('fontFamily.heading');
+  font-size: theme('fontSize.heading-2');
+  font-weight: theme('fontWeight.bold');
+}
+
+h3, .h3 {
+  font-family: theme('fontFamily.heading');
+  font-size: theme('fontSize.heading-3');
+  font-weight: theme('fontWeight.semibold');
+}
+
+/* Paragraphs */
+p {
+  margin-bottom: theme('spacing.4');
+  line-height: theme('lineHeight.relaxed');
+}
+
+/* Links */
+a {
+  transition: colors 0.2s;
+}
+
+/* Lists */
+ul, ol {
+  margin-bottom: theme('spacing.4');
+}
+
+li {
+  margin-bottom: theme('spacing.2');
+}
+
+
+/* Small text */
+.text-small {
+  font-size: theme('fontSize.small');
+  color: theme('colors.gray.600');
+} 

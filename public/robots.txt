@@ -3,4 +3,4 @@ User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: https://www.lrcm.mn/sitemap.xml
+Sitemap: https://www.belawfirm.mn/sitemap.xml
