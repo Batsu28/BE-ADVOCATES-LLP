@@ -2,7 +2,7 @@ export const siteConfig = {
   name: "BE ADVOCATES LLP",
   description:
     "BE ADVOCATES LLP нь 2013 оноос хойш мэргэжлийн өндөр төвшинд хууль зүйн үйлчилгээг үзүүлж байна.",
-  url: "https://www.belawfirm.mn",
+  url: "https://be-advocates-llp.vercel.app",
   foundingYear: 2013,
   contact: {
     address: {
