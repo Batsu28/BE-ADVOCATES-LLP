@@ -11,7 +11,7 @@ import Service from "./pages/service";
 import Attorney from "./pages/attorney";
 import Error from "./pages/Error";
 
-import PageTransition from "./components/PageTransition";
+import PageTransition from "./components/common/PageTransition";
 
 function App() {
   const location = useLocation();

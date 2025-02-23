@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import CustomLink from "../components/common/link";
 
 const Error = () => {
   const is404 = true;
@@ -17,13 +18,14 @@ const Error = () => {
             ? "Таны хайсан хуудас олдсонгүй. Хуудас устсан эсвэл шилжсэн байж болно."
             : "Техникийн алдаа гарлаа. Та дахин оролдоно уу."}
         </p>
-        <Link
+        <CustomLink
           to="/"
+          aria-label="Go to homepage"
           className="inline-block px-8 py-4 bg-gray-900 text-white font-semibold rounded-lg
-          hover:bg-gray-800 transition-colors"
+               hover:bg-gray-800 transition-colors"
         >
           Нүүр хуудас руу буцах
-        </Link>
+        </CustomLink>
       </div>
     </main>
   );

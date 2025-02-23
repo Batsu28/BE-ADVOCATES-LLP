@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import { useIntersectionObserver } from "../hooks/useIntersectionObserver";
+import { useIntersectionObserver } from "../../hooks/useIntersectionObserver";
 
 const Section = ({ title, children }) => {
   const ref = useRef(null);

@@ -1,6 +1,6 @@
-import SEO from "../components/SEO";
-import { Link } from "react-router-dom";
+import SEO from "../components/common/SEO";
 import Team from "../components/team";
+import CustomLink from "../components/common/link";
 
 const StatCard = ({ number, label }) => (
   <div className="flex flex-col items-center p-6 bg-white rounded-xl shadow-md">
@@ -40,14 +40,13 @@ const Home = () => {
                 2013 оноос хойш бид таны эрх ашгийг хамгаалж, хууль зүйн өндөр
                 түвшний үйлчилгээг үзүүлж байна.
               </p>
-              <Link
+              <CustomLink
                 to="/contact"
-                target="_top"
                 className="inline-block px-8 py-4 bg-white text-gray-900 font-semibold rounded-lg 
-                hover:bg-gray-100 transition-colors"
+              hover:bg-gray-100 transition-colors"
               >
                 Холбоо барих
-              </Link>
+              </CustomLink>
             </div>
           </div>
         </section>
@@ -120,13 +119,12 @@ const Home = () => {
                     {service.title}
                   </h3>
                   <p className="text-gray-600 mb-6">{service.description}</p>
-                  <Link
+                  <CustomLink
                     to="/services"
-                    target="_top"
                     className="text-gray-900 font-medium hover:text-gray-600 transition-colors"
                   >
                     Дэлгэрэнгүй →
-                  </Link>
+                  </CustomLink>
                 </div>
               ))}
             </div>
@@ -140,14 +138,13 @@ const Home = () => {
               Хууль зүйн туслалцаа хэрэгтэй байна уу?
             </h2>
             <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto"></p>
-            <Link
+            <CustomLink
               to="/contact"
-              target="_top"
               className="inline-block px-8 py-4 bg-white text-gray-900 font-semibold rounded-lg 
-              hover:bg-gray-100 transition-colors"
+                hover:bg-gray-100 transition-colors"
             >
               Холбоо барих
-            </Link>
+            </CustomLink>
           </div>
         </section>
       </main>

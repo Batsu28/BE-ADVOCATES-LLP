@@ -1,5 +1,5 @@
-import Section from "../components/section";
-import SEO from "../components/SEO";
+import Section from "../components/common/section";
+import SEO from "../components/common/SEO";
 
 const ContactInfo = ({ label, children }) => (
   <div className="flex flex-col gap-2">

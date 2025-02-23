@@ -1,6 +1,6 @@
 import Team from "../components/team";
-import Section from "../components/section";
-import SEO from "../components/SEO";
+import Section from "../components/common/section";
+import SEO from "../components/common/SEO";
 import Logo from "../components/svg/logo";
 
 const About = () => {

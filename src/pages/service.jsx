@@ -1,6 +1,6 @@
 import { useState } from "react";
-import Section from "../components/section";
-import SEO from "../components/SEO";
+import Section from "../components/common/section";
+import SEO from "../components/common/SEO";
 import { siteConfig } from "../data/siteData";
 
 const ServiceCard = ({ service }) => {

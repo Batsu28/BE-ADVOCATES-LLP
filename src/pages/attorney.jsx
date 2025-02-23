@@ -1,8 +1,9 @@
 import { useParams } from "react-router-dom";
 import { BsTelephoneFill } from "react-icons/bs";
 import { MdEmail } from "react-icons/md";
-import SEO from "../components/SEO";
+import SEO from "../components/common/SEO";
 import { siteConfig } from "../data/siteData";
+import Image from "../components/common/Image";
 
 const Attorney = () => {
   const { id } = useParams();
@@ -19,6 +20,7 @@ const Attorney = () => {
         description={attorney.about}
         name={siteConfig.name}
         type="profile"
+        image={attorney.imageUrl}
       />
       <main className="maincontainer bg-gradient-to-b from-gray-50 to-white">
         <div className="container w-full pt-28 pb-24">
@@ -27,7 +29,7 @@ const Attorney = () => {
             <div className="bg-white rounded-xl shadow-md overflow-hidden mb-8">
               <div className="md:flex">
                 <div className="md:w-1/3">
-                  <img
+                  <Image
                     src={attorney.imageUrl}
                     alt={attorney.name}
                     className="w-full h-full object-cover object-center"

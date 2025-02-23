@@ -1,6 +1,7 @@
 import Logo from "./svg/logo";
 import { Link } from "react-router-dom";
 import { siteConfig } from "../data/siteData";
+import CustomLink from "./common/link";
 
 const FooterSection = ({ title, children }) => (
   <div className="flex flex-col gap-4">
@@ -35,15 +36,14 @@ const Footer = () => {
           <div className="lg:col-span-1">
             <FooterSection title="Цэс">
               <ul className="space-y-2">
-                {siteConfig.navigation.map((link) => (
-                  <li key={link.path}>
-                    <Link
+                {siteConfig.navigation.map((link, i) => (
+                  <li key={link.path + i}>
+                    <CustomLink
                       to={link.path}
-                      target="_top"
                       className="text-gray-400 hover:text-white transition-colors block py-1"
                     >
                       {link.label}
-                    </Link>
+                    </CustomLink>
                   </li>
                 ))}
               </ul>

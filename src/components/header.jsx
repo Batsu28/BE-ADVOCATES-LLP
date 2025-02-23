@@ -1,70 +1,117 @@
-import { Link, useLocation } from "react-router-dom";
+import { useState, useRef, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import Logo from "./svg/logo";
-import { useState } from "react";
 import { siteConfig } from "../data/siteData";
+import CustomLink from "./common/link";
 
 const Header = () => {
-  const router = useLocation();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const menuRef = useRef(null);
+  const buttonRef = useRef(null);
+  const router = useLocation();
+  console.log(isMenuOpen);
+  // Close menu on escape key
+  useEffect(() => {
+    const handleEscape = (e) => {
+      if (e.key === "Escape") setIsMenuOpen(false);
+    };
+    document.addEventListener("keydown", handleEscape);
+    return () => document.removeEventListener("keydown", handleEscape);
+  }, []);
+
+  // Close menu when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (
+        menuRef.current &&
+        !menuRef.current.contains(e.target) &&
+        !buttonRef.current.contains(e.target)
+      ) {
+        setIsMenuOpen(false);
+      }
+    };
+
+    if (isMenuOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [isMenuOpen]);
+
+  // Close menu on route change
+  useEffect(() => {
+    setIsMenuOpen(false);
+  }, [router.pathname]);
 
   return (
     <header
-      className={`fixed top-0 w-full z-50 transition-all duration-300
-      bg-white`}
+      role="banner"
+      className="fixed top-0 w-full z-50 bg-white shadow-sm"
     >
-      <div className={`container mx-auto `}>
-        <div className="flex items-center justify-between p-4">
-          {/* Logo */}
-          <Link to="/" target="_top" className="flex-shrink-0">
-            <div className="flex items-center gap-3">
-              <div className={`w-12 h-12 bg-gray-900 rounded-xl text-white`}>
-                <Logo />
-              </div>
-              <span className={`text-xl font-semibold text-gray-900`}>
-                ADVOCATES LLP
-              </span>
-            </div>
-          </Link>
+      <div className="container mx-auto">
+        <nav role="navigation" aria-label="Main navigation">
+          <div className=" flex items-center justify-between p-2">
+            {/* Logo */}
 
-          {/* Desktop Navigation */}
-          <nav className="hidden lg:block">
-            <ul className="flex items-center gap-8">
+            <CustomLink to="/" aria-label="Go to homepage">
+              <div className="flex items-center gap-3 text-black">
+                <div className={`w-12 h-10 rounded-xl`}>
+                  <Logo />
+                </div>
+                <span className={`lg:text-xl font-semibold `}>
+                  ADVOCATES LLP
+                </span>
+              </div>
+            </CustomLink>
+
+            {/* Desktop Menu */}
+            <div className="hidden md:flex items-center space-x-8 ">
               {siteConfig.navigation.map((item) => (
-                <li key={item.path}>
-                  <Link
-                    to={item.path}
-                    target="_top"
-                    className={`relative py-2 px-1 text-base font-medium transition-colors
+                <CustomLink
+                  key={item.path}
+                  to={item.path}
+                  aria-current={
+                    router.pathname === item.path ? "page" : undefined
+                  }
+                  className={`relative py-1 px-2 text-base font-medium transition-all duration-300
                     ${
                       router.pathname === item.path
-                        ? "text-black"
+                        ? "text-black scale-105"
                         : "text-gray-600 hover:text-black"
                     }`}
-                  >
-                    {item.label}
-                    <span
-                      className={`absolute bottom-0 left-0 w-full h-0.5 transform origin-left transition-transform duration-300
+                >
+                  {item.label}
+                  <span
+                    className={`absolute bottom-0 left-0 w-full h-0.5 transform origin-left transition-transform duration-300
                       bg-black
                       ${
                         router.pathname === item.path
                           ? "scale-x-100"
                           : "scale-x-0"
                       }`}
-                    />
-                  </Link>
-                </li>
+                  />
+                </CustomLink>
               ))}
-            </ul>
-          </nav>
+            </div>
 
-          {/* Desktop Contact Info */}
-          <div className="hidden lg:block">
-            <a
-              href="tel:(976) 99115442"
-              className={`flex items-center gap-2 text-gray-600 hover:text-black`}
+            {/* Mobile Menu Button */}
+            <button
+              ref={buttonRef}
+              type="button"
+              aria-expanded={isMenuOpen}
+              aria-controls="mobile-menu"
+              aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+              className="md:hidden"
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
             >
+              <span className="sr-only">
+                {isMenuOpen ? "Close menu" : "Open menu"}
+              </span>
+              {/* Hamburger icon */}
               <svg
-                className="w-5 h-5"
+                className="w-6 h-6"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -73,91 +120,43 @@ const Header = () => {
                   strokeLinecap="round"
                   strokeLinejoin="round"
                   strokeWidth={2}
-                  d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
+                  d={
+                    isMenuOpen
+                      ? "M6 18L18 6M6 6l12 12"
+                      : "M4 6h16M4 12h16m-16 6h16"
+                  }
                 />
               </svg>
-              <span className="font-medium">(976) 99115442</span>
-            </a>
+            </button>
           </div>
 
-          {/* Mobile Menu Button */}
-          <button
-            className={`lg:hidden p-2 text-black`}
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
+          {/* Mobile Menu */}
+          <div
+            id="mobile-menu"
+            ref={menuRef}
+            role="menu"
+            aria-orientation="vertical"
+            aria-labelledby="mobile-menu-button"
+            className={`md:hidden transition-all duration-300 ease-in-out 
+              ${isMenuOpen ? "max-h-96" : "max-h-0"} overflow-hidden`}
           >
-            <svg
-              className="w-6 h-6"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d={
-                  isMenuOpen
-                    ? "M6 18L18 6M6 6l12 12"
-                    : "M4 6h16M4 12h16m-16 6h16"
+            {siteConfig.navigation.map((item) => (
+              <CustomLink
+                key={item.path}
+                to={item.path}
+                role="menuitem"
+                aria-current={
+                  router.pathname === item.path ? "page" : undefined
                 }
-              />
-            </svg>
-          </button>
-        </div>
-
-        {/* Mobile Menu */}
-        <div
-          className={`lg:hidden transition-all duration-300 ease-in-out
-          ${
-            isMenuOpen
-              ? "max-h-96 opacity-100"
-              : "max-h-0 opacity-0 pointer-events-none"
-          }`}
-        >
-          <nav className="px-6 pb-4">
-            <ul className="flex flex-col gap-1">
-              {siteConfig.navigation.map((item) => (
-                <li key={item.path}>
-                  <Link
-                    to={item.path}
-                    target="_top"
-                    onClick={() => setIsMenuOpen(false)}
-                    className={`block py-2 text-lg font-medium transition-colors
-                    ${
-                      router.pathname === item.path
-                        ? "text-black"
-                        : "text-gray-600 hover:text-black"
-                    }`}
-                  >
-                    {item.label}
-                  </Link>
-                </li>
-              ))}
-              <li className="pt-4 border-t border-gray-700">
-                <a
-                  href="tel:(976) 99115442"
-                  className={`flex items-center gap-2 text-gray-600 hover:text-black
-                  `}
-                >
-                  <svg
-                    className="w-5 h-5"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
-                    />
-                  </svg>
-                  <span className="font-medium">(976) 99115442</span>
-                </a>
-              </li>
-            </ul>
-          </nav>
-        </div>
+                className="block px-4 py-2 text-base font-medium text-gray-600 
+              hover:bg-gray-50 hover:text-black"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                {item.label}
+              </CustomLink>
+            ))}
+          </div>
+        </nav>
       </div>
     </header>
   );

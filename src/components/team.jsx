@@ -1,14 +1,14 @@
 import { MdEmail } from "react-icons/md";
 import { BsTelephoneFill } from "react-icons/bs";
 import { HiChevronRight } from "react-icons/hi";
-import { Link } from "react-router-dom";
 import { siteConfig } from "../data/siteData";
+
+import CustomLink from "./common/link";
 
 const MemberCard = ({ style, member }) => {
   return (
-    <Link
+    <CustomLink
       to={`/attorney/${member.id}`}
-      target="_top"
       className="transform hover:-translate-y-2 transition-transform duration-300"
     >
       <div className="h-full flex justify-center">
@@ -67,7 +67,7 @@ const MemberCard = ({ style, member }) => {
           <div className="absolute inset-0 bg-black/0 transition-colors duration-300 group-hover/member:bg-black/5" />
         </div>
       </div>
-    </Link>
+    </CustomLink>
   );
 };
 

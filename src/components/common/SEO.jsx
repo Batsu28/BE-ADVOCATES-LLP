@@ -1,5 +1,5 @@
 import { Helmet } from "react-helmet-async";
-import { siteConfig, seoData, structuredData } from "../data/siteData";
+import { siteConfig, seoData, structuredData } from "../../data/siteData";
 
 const SEO = ({ title, description, name, type, image }) => {
   const siteUrl = siteConfig.url;
