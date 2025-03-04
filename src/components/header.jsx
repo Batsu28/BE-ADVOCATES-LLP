@@ -71,13 +71,13 @@ const Header = () => {
                     <text
                       x="50%"
                       y="11.5"
-                      font-family="Times New Roman, serif"
-                      font-size="5.5"
+                      fontFamily="Times New Roman, serif"
+                      fontSize="5.5"
                       // fill="black"
                       fill={"currentColor"}
                       stroke={"currentColor"}
                       strokeWidth={0}
-                      text-anchor="middle"
+                      textAnchor="middle"
                     >
                       ADVOCATES LLP
                     </text>
@@ -171,7 +171,7 @@ const Header = () => {
                 aria-current={
                   router.pathname === item.path ? "page" : undefined
                 }
-                className="block px-4 py-2 text-base font-medium text-gray-600 
+                className="block px-4 py-2 text-base font-medium text-white 
               hover:bg-gray-50 hover:text-black"
                 onClick={() => setIsMenuOpen(false)}
               >

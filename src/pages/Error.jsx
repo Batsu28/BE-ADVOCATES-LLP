@@ -5,7 +5,7 @@ const Error = () => {
   const is404 = true;
 
   return (
-    <main className="min-h-screen bg-gray-50 flex items-center justify-center px-6">
+    <main className="min-h-screen flex items-center justify-center px-6">
       <div className="text-center max-w-xl">
         <h1 className="text-9xl font-bold text-gray-900 mb-4">
           {is404 ? "404" : "Уучлаарай"}

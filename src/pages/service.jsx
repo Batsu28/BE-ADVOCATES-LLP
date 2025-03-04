@@ -9,12 +9,16 @@ const ServiceCard = ({ service }) => {
   return (
     <div
       className={`w-full bg-white shadow-md transition-all duration-300 
-      ${isOpen ? "my-6" : "my-2"} hover:shadow-lg`}
+      ${isOpen ? "my-6 scale-[1.01]" : "my-2"} hover:shadow-lg`}
       onClick={() => setIsOpen(!isOpen)}
     >
       <div
-        className={`p-6 cursor-pointer transition-colors duration-300  border-l-[3px] border-black
-        ${isOpen ? "bg-gray-50" : "hover:bg-gray-50"}`}
+        className={`p-6 cursor-pointer transition-colors duration-300  border-l-[3px] 
+        ${
+          isOpen
+            ? "bg-gray-50 border-secondary-dark text-secondary-dark"
+            : "hover:bg-gray-50 border-black"
+        }`}
       >
         <div className="flex justify-between items-center">
           <h2 className="text-xl font-medium tracking-tight">
@@ -22,7 +26,7 @@ const ServiceCard = ({ service }) => {
           </h2>
           <svg
             className={`w-6 h-6 transition-transform duration-300 
-            ${isOpen ? "rotate-180 text-black" : "text-gray-600"}`}
+            ${isOpen ? "rotate-180 text-secondary-dark" : "text-gray-600"}`}
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -69,7 +73,7 @@ const Service = () => {
         name="BE ADVOCATES LLP"
         type="website"
       />
-      <main className="maincontainer bg-gray-50">
+      <main className="maincontainer">
         <div className="container w-full pt-28 pb-24 px-6">
           <Section title={"МАНАЙ ҮЙЛЧИЛГЭЭ"}>
             <div className="max-w-4xl mx-auto">

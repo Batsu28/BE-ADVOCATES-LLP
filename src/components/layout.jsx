@@ -4,7 +4,7 @@ import Header from "./header";
 
 const Layout = ({ children }) => {
   return (
-    <div className="text-black relative">
+    <div className="min-h-screen text-gray-900">
       <Header />
       {children}
       <Footer />

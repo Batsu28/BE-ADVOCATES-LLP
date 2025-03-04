@@ -12,7 +12,7 @@ const About = () => {
         name="BE ADVOCATES LLP"
         type="website"
       />
-      <main className="maincontainer bg-gradient-to-b from-gray-50 to-white">
+      <main className="maincontainer ">
         <div className="container w-full pt-28 pb-24 flex flex-col gap-24">
           <Section title={"БИДНИЙ ТУХАЙ"}>
             <div className="max-w-4xl mx-auto px-6 lg:px-0">

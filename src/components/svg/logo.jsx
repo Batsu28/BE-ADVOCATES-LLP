@@ -18,13 +18,13 @@ const Logo = ({ stroke, fill, text = true, children }) => {
         <text
           x="170"
           y="290"
-          font-family="Times New Roman, serif"
-          font-size="42"
+          fontFamily="Times New Roman, serif"
+          fontSize="42"
           // fill="black"
           fill={fill || "currentColor"}
           stroke={stroke || "currentColor"}
           strokeWidth={0.5}
-          text-anchor="middle"
+          textAnchor="middle"
         >
           ADVOCATES LLP
         </text>
