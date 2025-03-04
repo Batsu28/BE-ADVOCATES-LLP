@@ -57,7 +57,7 @@ const MemberCard = ({ style, member }) => {
 
             {/* View Profile Button */}
             <div className="absolute top-1/2 right-6 -translate-y-1/2">
-              <div className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center text-gray-400 group-hover/member:bg-gray-900 group-hover/member:text-white transition-all duration-300">
+              <div className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center text-gray-400 group-hover/member:bg-secondary-dark group-hover/member:text-white transition-all duration-300">
                 <HiChevronRight size={20} />
               </div>
             </div>
@@ -77,11 +77,11 @@ const Team = () => {
       {siteConfig.team.map((member) => (
         <div
           key={member.id}
-          className="transform hover:-translate-y-2 transition-transform duration-300"
+          className="transform hover:-translate-y-2 transition-transform duration-300 "
         >
           <MemberCard
             member={member}
-            style="w-full h-[450px] bg-white shadow-lg rounded-xl overflow-hidden hover:shadow-xl transition-shadow duration-300"
+            style="w-full h-[450px] bg-white shadow-lg rounded-xl overflow-hidden hover:shadow-xl hover:shadow-secondary-dark/20 transition-shadow duration-300"
           />
         </div>
       ))}

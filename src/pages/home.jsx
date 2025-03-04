@@ -1,6 +1,7 @@
 import SEO from "../components/common/SEO";
 import Team from "../components/team";
 import CustomLink from "../components/common/link";
+import CoverSection from "../components/CoverSection";
 
 const StatCard = ({ number, label }) => (
   <div className="flex flex-col items-center p-6 bg-white rounded-xl shadow-md">
@@ -21,47 +22,10 @@ const Home = () => {
       <main className="w-full">
         {/* Hero Section */}
         <section className="relative h-screen">
-          <div className="absolute inset-0">
-            <img
-              src="/cover.webp"
-              alt="Law Office"
-              loading="eager"
-              className="w-full h-full object-cover"
-            />
-            <div className="absolute inset-0 bg-black/50" />
-          </div>
-
-          <div className="relative container mx-auto h-full flex items-center px-6">
-            <div className="max-w-2xl text-white">
-              <h1 className="text-5xl font-bold mb-6">
-                Таны итгэлт хуулийн зөвлөх
-              </h1>
-              <p className="text-xl mb-8 text-gray-200">
-                2013 оноос хойш бид таны эрх ашгийг хамгаалж, хууль зүйн өндөр
-                түвшний үйлчилгээг үзүүлж байна.
-              </p>
-              <CustomLink
-                to="/contact"
-                className="inline-block px-8 py-4 bg-white text-gray-900 font-semibold rounded-lg 
-              hover:bg-gray-100 transition-colors"
-              >
-                Холбоо барих
-              </CustomLink>
-            </div>
-          </div>
+          <CoverSection />
         </section>
 
         {/* Stats Section */}
-        {/* <section className="py-20 bg-gray-50">
-          <div className="container mx-auto px-6">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-              <StatCard number="10+" label="Жилийн туршлага" />
-              <StatCard number="1000+" label="Амжилттай хэргүүд" />
-              <StatCard number="20+" label="Мэргэшсэн хуульчид" />
-              <StatCard number="98%" label="Сэтгэл ханамж" />
-            </div>
-          </div>
-        </section> */}
 
         {/* Team Section */}
         <section className="py-24">

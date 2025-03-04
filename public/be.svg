@@ -1,0 +1,8 @@
+<svg width="1000" height="1000" viewBox="0 0 1000 1000" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="1000" height="1000" fill="white"/>
+<g transform="translate(250 350)">
+<text x="0" y="0" font-family="Times New Roman, serif" font-size="250" fill="#A52A2A" font-weight="normal">BE</text>
+<path d="M110 30C110 80 160 110 210 100C260 90 270 40 250 0C230 -40 180 -70 140 -50C100 -30 90 20 110 30Z" stroke="#A52A2A" stroke-width="2" fill="none"/>
+</g>
+<text x="500" y="650" font-family="Times New Roman, serif" font-size="30" fill="black" text-anchor="middle">ADVOCATES LLP</text>
+</svg>

@@ -24,7 +24,6 @@ body,
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
   background: #f9fafb;
   color: rgb(247, 249, 235);
 }

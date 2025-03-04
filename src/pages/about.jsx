@@ -41,7 +41,7 @@ const About = () => {
                     />
                   </div>
                   <div className="absolute -bottom-6 -left-6 w-24 h-24 bg-gray-900 text-white rounded-lg flex items-center justify-center">
-                    <Logo></Logo>
+                    <Logo text={false}></Logo>
                   </div>
                 </div>
               </div>

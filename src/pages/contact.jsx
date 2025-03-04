@@ -17,7 +17,7 @@ const Contact = () => {
         name="BE ADVOCATES LLP"
         type="website"
       />
-      <main className="maincontainer bg-gradient-to-b from-gray-50 to-white">
+      <main className="maincontainer bg-gradient-to-b from-gray-50 to-white ">
         <div className="container w-full pt-28 pb-24">
           <Section title={"Холбоо барих"}>
             <div className="max-w-6xl mx-auto px-6">

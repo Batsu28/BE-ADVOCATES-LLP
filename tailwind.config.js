@@ -19,6 +19,7 @@ module.exports = {
       animation: {
         'fadeIn': 'fadeIn 0.3s ease-in-out',
         'slideIn': 'slideIn 0.5s ease-out',
+        'loading': 'loading 0.5s ease out'
       },
       keyframes: {
         fadeIn: {
@@ -28,6 +29,22 @@ module.exports = {
         slideIn: {
           '0%': { transform: 'translateX(-10px)', opacity: '0' },
           '100%': { transform: 'translateX(0)', opacity: '1' },
+        },
+        loading:{
+          '0%': {  opacity: '1' },
+          '100%': { opacity: '0' },
+        }
+      },
+      colors: {
+        primary: {
+          light: '#9575CD',
+          DEFAULT: '#673AB7',
+          dark: '#512DA8',
+        },
+        secondary: {
+          light: '#9C27B0',
+          DEFAULT: '#7B1FA2',
+          dark: '#4A148C',
         },
       },
     },

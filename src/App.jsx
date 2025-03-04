@@ -1,4 +1,5 @@
 import "./App.css";
+import React, { useState, useEffect } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
 
@@ -10,11 +11,18 @@ import Contact from "./pages/contact";
 import Service from "./pages/service";
 import Attorney from "./pages/attorney";
 import Error from "./pages/Error";
-
+import TransitionOverlay from "./components/TransitionOverlay";
 import PageTransition from "./components/common/PageTransition";
 
 function App() {
   const location = useLocation();
+  const [isTransitioning, setIsTransitioning] = useState(false);
+
+  useEffect(() => {
+    setIsTransitioning(true);
+    const timer = setTimeout(() => setIsTransitioning(false), 500);
+    return () => clearTimeout(timer);
+  }, [location]);
 
   return (
     <HelmetProvider>
@@ -62,6 +70,7 @@ function App() {
           />
           <Route path="*" element={<Error />} />
         </Routes>
+        <TransitionOverlay isVisible={isTransitioning} />
       </Layout>
     </HelmetProvider>
   );

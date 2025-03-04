@@ -9,7 +9,7 @@ const Header = () => {
   const menuRef = useRef(null);
   const buttonRef = useRef(null);
   const router = useLocation();
-  console.log(isMenuOpen);
+
   // Close menu on escape key
   useEffect(() => {
     const handleEscape = (e) => {
@@ -48,7 +48,7 @@ const Header = () => {
   return (
     <header
       role="banner"
-      className="fixed top-0 w-full z-50 bg-white shadow-sm"
+      className="fixed top-0 w-full z-50 bg-secondary-dark shadow-sm text-white"
     >
       <div className="container mx-auto">
         <nav role="navigation" aria-label="Main navigation">
@@ -56,18 +56,41 @@ const Header = () => {
             {/* Logo */}
 
             <CustomLink to="/" aria-label="Go to homepage">
-              <div className="flex items-center gap-3 text-black">
+              <div className="flex items-center gap-0 hover:opacity-90 duration-100 transition-opacity">
                 <div className={`w-12 h-10 rounded-xl`}>
-                  <Logo />
+                  <Logo text={false} />
                 </div>
-                <span className={`lg:text-xl font-semibold `}>
+                <div className="h-10 w-32">
+                  <svg
+                    version="1.1"
+                    id="Layer_1"
+                    height="100%"
+                    viewBox="0 0 46 18"
+                    // className="bg-black"
+                  >
+                    <text
+                      x="50%"
+                      y="11.5"
+                      font-family="Times New Roman, serif"
+                      font-size="5.5"
+                      // fill="black"
+                      fill={"currentColor"}
+                      stroke={"currentColor"}
+                      strokeWidth={0}
+                      text-anchor="middle"
+                    >
+                      ADVOCATES LLP
+                    </text>
+                  </svg>
+                </div>
+                {/* <span className={`lg:text-xl font-semibold `}>
                   ADVOCATES LLP
-                </span>
+                </span> */}
               </div>
             </CustomLink>
 
             {/* Desktop Menu */}
-            <div className="hidden md:flex items-center space-x-8 ">
+            <div className="hidden lg:flex items-center space-x-8 ">
               {siteConfig.navigation.map((item) => (
                 <CustomLink
                   key={item.path}
@@ -78,14 +101,14 @@ const Header = () => {
                   className={`relative py-1 px-2 text-base font-medium transition-all duration-300
                     ${
                       router.pathname === item.path
-                        ? "text-black scale-105"
-                        : "text-gray-600 hover:text-black"
+                        ? "scale-105"
+                        : "text-gray-200 hover:text-white"
                     }`}
                 >
                   {item.label}
                   <span
                     className={`absolute bottom-0 left-0 w-full h-0.5 transform origin-left transition-transform duration-300
-                      bg-black
+                      bg-white
                       ${
                         router.pathname === item.path
                           ? "scale-x-100"
@@ -103,7 +126,7 @@ const Header = () => {
               aria-expanded={isMenuOpen}
               aria-controls="mobile-menu"
               aria-label={isMenuOpen ? "Close menu" : "Open menu"}
-              className="md:hidden"
+              className="md:hidden text-white"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
             >
               <span className="sr-only">
@@ -137,7 +160,7 @@ const Header = () => {
             role="menu"
             aria-orientation="vertical"
             aria-labelledby="mobile-menu-button"
-            className={`md:hidden transition-all duration-300 ease-in-out 
+            className={`lg:hidden transition-all duration-300 ease-in-out 
               ${isMenuOpen ? "max-h-96" : "max-h-0"} overflow-hidden`}
           >
             {siteConfig.navigation.map((item) => (
